@@ -1,0 +1,527 @@
+body {
+    background: #294677;
+    font-family: Segoe UI, Arial, sans-serif;
+}
+
+
+
+header {
+
+    color: white;
+
+}
+
+.titulo {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+header p {
+    color: #d8dce5;
+    margin-top: 8px;
+}
+
+
+
+main {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, .25);
+}
+
+
+
+.subtitulo {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+
+main p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+
+
+input {
+    border: 1px solid #d9dfe9;
+    border-radius: 6px;
+    background: #eef2fa;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #1f4d92;
+    background: white;
+}
+
+
+button {
+    background: #1f4d92;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+hr {
+    margin: 25px 0;
+    border: 1px solid #e3e3e3;
+}
+
+
+
+footer p {
+    font-size: 13px;
+    color: #777;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #002663;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar-header {
+    margin-bottom: 30px;
+}
+
+.sidebar-menu {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-menu a {
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar-menu a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background-color: #1d4ed8;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.logo-title {
+    font-weight: bold;
+    color: #1e3a8a;
+    font-size: 16px;
+}
+
+.logo-subtitle {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-carrito {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-panel {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1d4ed8 100%);
+    color: white;
+    padding: 60px 5%;
+    text-align: left;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.badge {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 20px 0;
+    line-height: 1.2;
+}
+
+.hero .highlight {
+    color: #f43f5e;
+    /* Tono rosado/coral del texto 'música' */
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: white;
+    color: #1e3a8a;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 40px;
+}
+
+.hero-stats h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.hero-stats p {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    padding: 40px 5%;
+}
+
+.container h2 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* BUSCADOR */
+.search-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.search-bar input {
+    flex: 2;
+    min-width: 200px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.search-bar select {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: white;
+    color: #475569;
+}
+
+/* EVENT CARDS GRID (Responsivo) */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.event-card {
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 200px;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Etiquetas sobre la foto */
+.tag-category {
+    position: absolute;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.tag-city {
+    position: absolute;
+    background-color: white;
+    color: #1e293b;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tag-left {
+    top: 12px;
+    left: 12px;
+}
+
+.tag-right {
+    top: 12px;
+    right: 12px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h3 {
+    font-size: 18px;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.card-date {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+}
+
+.price-label {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: bold;
+}
+
+.price-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-view {
+    background-color: white;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-add {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* SECCIÓN DE TRES CAJAS (Características inferiores) */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background-color: #ffffff;
+    border: 1px solid #f1f5f9;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.feature-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #1d4ed8;
+}
+
+.feature-item h3 {
+    font-size: 16px;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.feature-item p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* FOOTER */
+.main-footer {
+    background-color: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+}
+
+.main-footer h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.main-footer p {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* MEDIA QUERY PARA TELÉFONOS (Diseño Móvil) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero-stats {
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+}
