@@ -1,5 +1,4 @@
 # Conciertos Conectados - Plataforma Web de Venta de Entradas 🎟️
-khjijh
 ## 📝 Descripción del Proyecto
 
 **Conciertos Conectados** es una solución web integral y modular diseñada específicamente para resolver el desafío comercial de la compañía organizadora de eventos del mismo nombre, la cual requería expandir su alcance de mercado y facilitar a sus usuarios la adquisición de entradas de forma ágil, intuitiva y centralizada. La plataforma elimina las barreras de acceso tradicionales, ofreciendo un entorno digital unificado que se divide en dos frentes de interacción completamente optimizados:
