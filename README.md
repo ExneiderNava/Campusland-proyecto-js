@@ -1,5 +1,5 @@
 # Conciertos Conectados - Plataforma Web de Venta de Entradas 🎟️
-
+khjijh
 ## 📝 Descripción del Proyecto
 
 **Conciertos Conectados** es una solución web integral y modular diseñada específicamente para resolver el desafío comercial de la compañía organizadora de eventos del mismo nombre, la cual requería expandir su alcance de mercado y facilitar a sus usuarios la adquisición de entradas de forma ágil, intuitiva y centralizada. La plataforma elimina las barreras de acceso tradicionales, ofreciendo un entorno digital unificado que se divide en dos frentes de interacción completamente optimizados:
@@ -27,3 +27,7 @@ Este proyecto ha sido estructurado, diseñado y desarrollado por el siguiente eq
 * **Exneider Nava**
 * **Carlos Said Pérez Gutiérrez**
 * **Keiler Sebastián Serrano**
+
+  imagenes del prototipo de interfaz de administradro
+  <img width="1037" height="582" alt="image" src="https://github.com/user-attachments/assets/f6114a69-21f4-42c6-9f77-af330398b797" />
+
