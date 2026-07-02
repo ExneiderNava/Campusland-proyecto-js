@@ -30,4 +30,6 @@ Este proyecto ha sido estructurado, diseñado y desarrollado por el siguiente eq
 
   imagenes del prototipo de interfaz de administradro
   <img width="1037" height="582" alt="image" src="https://github.com/user-attachments/assets/f6114a69-21f4-42c6-9f77-af330398b797" />
+  <img width="1037" height="836" alt="image" src="https://github.com/user-attachments/assets/6fcefb00-9cb2-4350-bc47-127d3cc5e0dd" />
+
 
