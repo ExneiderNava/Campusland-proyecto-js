@@ -156,6 +156,16 @@ footer p {
     padding: 8px;
     border-radius: 8px;
     font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+}
+.logo-icon img {
+    width: 40px;         
+    height: 40px;        
+    object-fit: contain; 
+    border-radius: 8px;  
 }
 
 .logo-title {
