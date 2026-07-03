@@ -20,13 +20,6 @@ formulario.addEventListener("submit", function (event) {
 
     }
 
-
-    else if (correo === "cliente@gmail.com" && contrasena === "12345") {
-        alert("Bienvenido Cliente");
-
-    }
-
-
     else {
         alert("Correo o contraseña incorrectos.");
     }
