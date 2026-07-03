@@ -810,3 +810,86 @@ footer p {
         padding: 20px; /* Menos espacio interno en teléfonos */
     }
 }
+/* Contenedor general configurado con Grid en lugar de Flex */
+.features-container {
+    display: grid;
+    /* Crea 3 columnas de igual tamaño de manera automática */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 24px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Tarjeta individual */
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto Hover interactivo */
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #1e3a8a;
+    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.1);
+}
+
+/* Contenedor circular adaptado para la escala mediana */
+.feature-icon-wrapper {
+    width: 80px;  /* Círculo un poco más grande para albergar la imagen mediana */
+    height: 80px;
+    background-color: #eff6ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    transition: background-color 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-wrapper {
+    background-color: #1e3a8a;
+}
+
+/* Control y ajuste de tamaño MEDIANO para tus imágenes */
+.feature-image {
+    width: 45px;  /* Tamaño mediano ideal para que destaque correctamente */
+    height: 45px;
+    object-fit: contain; /* Evita cualquier tipo de distorsión */
+    transition: filter 0.3s ease;
+}
+
+/* Invierte el color de la imagen al pasar el cursor (Opcional si usas iconos oscuros planos) */
+.feature-card:hover .feature-image {
+    filter: brightness(0) invert(1);
+}
+
+/* Títulos */
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    font-family: sans-serif;
+}
+
+/* Descripciones */
+.feature-description {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* Responsivo: Si la pantalla es muy pequeña (móviles), pasa a una sola columna */
+@media (max-width: 768px) {
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+}
