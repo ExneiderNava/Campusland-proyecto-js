@@ -16,8 +16,7 @@ formulario.addEventListener("submit", function (event) {
 
 
     if (correo === "admin@gmail.com" && contrasena === "1234") {
-        alert("Bienvenido Administrador");
-
+        window.location.href = "../pages/categorias.html"
     }
 
     else {
