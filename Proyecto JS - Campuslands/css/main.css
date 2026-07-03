@@ -340,6 +340,30 @@ footer p {
     gap: 30px;
     margin-bottom: 60px;
 }
+.events-grid {
+    display: grid;
+    /* Esto crea columnas automáticas que se adaptan al tamaño de la pantalla */
+    /* Cada tarjeta tendrá un ancho mínimo de 300px y un máximo de 1 fracción del espacio disponible */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    /* Espacio de separación entre las tarjetas */
+    gap: 20px; 
+    
+    /* Asegura que el contenedor ocupe el ancho completo disponible */
+    width: 100%;
+    max-width: 1200px; /* Ajusta este valor al ancho máximo de tu diseño */
+    margin: 0 auto;    /* Centra el contenedor en la pantalla */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Asegúrate también de que las tarjetas tengan un ancho adaptable */
+.event-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Tus estilos actuales de bordes, fondo, etc. */
+}
 
 .event-card {
     background-color: white;
@@ -533,5 +557,256 @@ footer p {
 
     .search-bar {
         flex-direction: column;
+    }
+}
+/* ==========================================================================
+   ESTILOS PARA LAS PÁGINAS DE NOSOTROS Y CONTACTO
+   ========================================================================== */
+
+/* --- Elementos Comunes --- */
+.active {
+    color: #1e3a8a !important; /* Resalta el enlace de la página actual en el menú */
+    font-weight: 600;
+}
+
+/* --- SECCIÓN: NOSOTROS (nosotros.html) --- */
+.about-section {
+    padding: 60px 0;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-content h2 {
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* Tarjetas de Misión y Visión (Métricas) */
+.about-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.metric-box {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.metric-box h4 {
+    color: #1e3a8a;
+    margin: 0 0 10px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.metric-box p {
+    font-size: 0.88rem;
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Imagen de la sección */
+.about-image img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+
+/* --- SECCIÓN: CONTACTO (contacto.html) --- */
+.contact-section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-header p {
+    color: #6b7280;
+    font-size: 1.05rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Tarjeta de información lateral */
+.contact-info-card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact-info-card h3 {
+    margin: 0 0 15px 0;
+    color: #111827;
+    font-size: 1.4rem;
+}
+
+.contact-info-card p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Filas de información (Ubicación, Correo, Teléfono) */
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.info-icon {
+    font-size: 1.3rem;
+    background: #f3f4f6;
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: #1e3a8a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-item h5 {
+    margin: 0 0 6px 0;
+    color: #1e3a8a;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.info-item p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Contenedor del Formulario */
+.contact-form-container {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    color: #1f2937;
+    background-color: #f9fafb;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+/* Efecto Focus al hacer click en los inputs */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.08);
+}
+
+/* Ajuste para el comportamiento del textarea */
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+
+/* --- ANIMACIÓN DE ENTRADA SUAVE --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- RESPONSIVIDAD (DISEÑO ADAPTABLE A MÓVILES) --- */
+@media (max-width: 992px) {
+    .about-container,
+    .contact-grid {
+        grid-template-columns: 1fr; /* Todo pasa a una sola columna */
+        gap: 30px;
+    }
+
+    .about-image {
+        order: -1; /* Mueve la imagen arriba en tablets y celulares */
+    }
+
+    .about-image img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-metrics {
+        grid-template-columns: 1fr; /* Misión y visión una debajo de otra en pantallas muy pequeñas */
+    }
+    
+    .contact-info-card,
+    .contact-form-container {
+        padding: 20px; /* Menos espacio interno en teléfonos */
     }
 }

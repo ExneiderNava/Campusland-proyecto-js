@@ -21,9 +21,9 @@
             </div>
         </div>
         <nav class="nav-links">
-            <a href="#">Eventos</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Contacto</a>
+            <a href="index.html">Eventos</a>
+            <a href="nostros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
         </nav>
         <nav class="nav-acions">
             <button class="btn-carrito">Carrito</button>
@@ -58,90 +58,20 @@
             </div>
         </div>
     </section>
-
     <main class="container">
         <h2>Próximos eventos</h2>
 
         <div class="search-bar">
-            <input type="text" placeholder="Buscar evento por nombre...">
-            <select>
-                <option>Todas las ciudades</option>
+            <input type="text" id="search-input" placeholder="Buscar evento por nombre...">
+            <select id="city-select">
+                <option value="todos">Todas las ciudades</option>
             </select>
-            <select>
-                <option>Todas las categorías</option>
+            <select id="category-select">
+                <option value="todos">Todas las categorías</option>
             </select>
         </div>
 
-        <div class="events-grid">
-
-            <article class="event-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500" alt="Rock al Parque">
-                    <span class="tag-category tag-left">Rock</span>
-                    <span class="tag-city tag-right">Bogotá</span>
-                </div>
-                <div class="card-body">
-                    <h3>Rock al Parque</h3>
-                    <p class="card-date">Fecha: 14 de ago de 2026 Hora: 18:00</p>
-                    <div class="card-footer">
-                        <div>
-                            <span class="price-label">DESDE</span>
-                            <p class="price-value">$ 85.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-view">Ver</button>
-                            <button class="btn-add">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="event-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500"
-                        alt="Festival Electrónico">
-                    <span class="tag-category tag-left">Electrónica</span>
-                    <span class="tag-city tag-right">Medellín</span>
-                </div>
-                <div class="card-body">
-                    <h3>Festival Electrónico Neon</h3>
-                    <p class="card-date">Fecha: 04 de sept de 2026 Hora: 20:00</p>
-                    <div class="card-footer">
-                        <div>
-                            <span class="price-label">DESDE</span>
-                            <p class="price-value">$ 150.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-view">Ver</button>
-                            <button class="btn-add">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="event-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=500" alt="Noche de Salsa">
-                    <span class="tag-category tag-left">Salsa</span>
-                    <span class="tag-city tag-right">Barranquilla</span>
-                </div>
-                <div class="card-body">
-                    <h3>Noche de Salsa Brava</h3>
-                    <p class="card-date">Fecha: 21 de jul de 2026 Hora: 21:00</p>
-                    <div class="card-footer">
-                        <div>
-                            <span class="price-label">DESDE</span>
-                            <p class="price-value">$ 65.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-view">Ver</button>
-                            <button class="btn-add">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-        </div>
+        <div class="events-grid" id="contenedor-eventos"></div>
 
         <div class="features-grid">
             <div class="feature-item">
@@ -167,6 +97,7 @@
         <p>© 2026 Conciertos Conectados. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="js/cliente.js"></script>
 </body>
 
 </html>
