@@ -1,26 +1,29 @@
-const formulario = document.querySelector("form");
+const formulario = document.querySelector("#form");
 
+window.addEventListener("DOMContentLoaded", () => {
+    const usuarioAdmin = {
+        correo: "admin@gmail.com",
+        contrasena: "1234"
+    };
+    localStorage.setItem("usuario", JSON.stringify(usuarioAdmin));
+    console.log("Usuario de prueba inyectado en localStorage.");
+});
 
 formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
 
+    const correoInput = document.querySelector("#correo").value;
+    const contrasenaInput = document.querySelector("#contrasena").value;
 
+    const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
 
-    const correo = document.getElementById("correo").value;
-    const contrasena = document.getElementById("contrasena").value;
+    if (usuarioGuardado &&
+        correoInput === usuarioGuardado.correo &&
+        contrasenaInput === usuarioGuardado.contrasena) {
 
-
-    if (correo === "" || contrasena === "") {
-        alert("Debe completar todos los campos.");
-        return;
-    }
-
-
-    if (correo === "admin@gmail.com" && contrasena === "1234") {
-        window.location.href = "../pages/categorias.html"
-    }
-
-    else {
+        alert("¡Acceso concedido!");
+        window.location.href = "categorias.html";
+    } else {
         alert("Correo o contraseña incorrectos.");
     }
-
 });
