@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conciertos Conectados - Vive la música en vivo</title>
+    <link rel="icon" href="resources/img/logo.jpeg">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -22,12 +23,12 @@
         </div>
         <nav class="nav-links">
             <a href="#">Eventos</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Contacto</a>
+            <a href="pages/nostros.html">Nosotros</a>
+            <a href="pages/contacto.html">Contacto</a>
         </nav>
         <nav class="nav-acions">
             <button class="btn-carrito">Carrito</button>
-            <a href="login.html">
+            <a href="pages/login.html">
                 <button class="btn-panel">ADMIN</button>
             </a>
         </nav>
@@ -39,8 +40,12 @@
             <h1>Vive tus <span class="highlight">eventos</span> favoritos</h1>
             <p>Descubre los mejores eventos en Colombia. Compra tus entradas de forma rápida y segura.</p>
             <div class="hero-buttons">
-                <button class="btn-primary">Explorar eventos</button>
-                <button class="btn-secondary">Conocer más</button>
+                <a href="#container">
+                    <button class="btn-primary">Explorar eventos</button>
+                </a>
+                <a href="pages/nostros.html">
+                    <button class="btn-secondary">Conocer más</button>
+                </a>
             </div>
             <div class="hero-stats">
                 <div>
@@ -58,115 +63,55 @@
             </div>
         </div>
     </section>
-
-    <main class="container">
+    <main class="container" id="container">
         <h2>Próximos eventos</h2>
 
         <div class="search-bar">
-            <input type="text" placeholder="Buscar evento por nombre...">
-            <select>
-                <option>Todas las ciudades</option>
+            <input type="text" id="search-input" placeholder="Buscar evento por nombre...">
+            <select id="city-select">
+                <option value="todos">Todas las ciudades</option>
             </select>
-            <select>
-                <option>Todas las categorías</option>
+            <select id="category-select">
+                <option value="todos">Todas las categorías</option>
             </select>
         </div>
 
-        <div class="events-grid">
-
-            <article class="event-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500" alt="Rock al Parque">
-                    <span class="tag-category tag-left">Rock</span>
-                    <span class="tag-city tag-right">Bogotá</span>
+        <div class="events-grid" id="contenedor-eventos"></div>
+        <section class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <img src="resources/img/candado-removebg-preview.png" alt="Icono Seguridad" class="feature-image">
                 </div>
-                <div class="card-body">
-                    <h3>Rock al Parque</h3>
-                    <p class="card-date">Fecha: 14 de ago de 2026 Hora: 18:00</p>
-                    <div class="card-footer">
-                        <div>
-                            <span class="price-label">DESDE</span>
-                            <p class="price-value">$ 85.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-view">Ver</button>
-                            <button class="btn-add">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="event-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500"
-                        alt="Festival Electrónico">
-                    <span class="tag-category tag-left">Electrónica</span>
-                    <span class="tag-city tag-right">Medellín</span>
-                </div>
-                <div class="card-body">
-                    <h3>Festival Electrónico Neon</h3>
-                    <p class="card-date">Fecha: 04 de sept de 2026 Hora: 20:00</p>
-                    <div class="card-footer">
-                        <div>
-                            <span class="price-label">DESDE</span>
-                            <p class="price-value">$ 150.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-view">Ver</button>
-                            <button class="btn-add">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="event-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=500" alt="Noche de Salsa">
-                    <span class="tag-category tag-left">Salsa</span>
-                    <span class="tag-city tag-right">Barranquilla</span>
-                </div>
-                <div class="card-body">
-                    <h3>Noche de Salsa Brava</h3>
-                    <p class="card-date">Fecha: 21 de jul de 2026 Hora: 21:00</p>
-                    <div class="card-footer">
-                        <div>
-                            <span class="price-label">DESDE</span>
-                            <p class="price-value">$ 65.000</p>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-view">Ver</button>
-                            <button class="btn-add">Agregar</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-item">
-                <div class="feature-icon">[Seguridad]</div>
-                <h3>Compra segura</h3>
-                <p>Transacciones protegidas y entradas garantizadas.</p>
+                <h3 class="feature-title">Compra segura</h3>
+                <p class="feature-description">Transacciones protegidas y entradas 100% garantizadas.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">[Envío]</div>
-                <h3>Entrega inmediata</h3>
-                <p>Recibe tus entradas en tu correo al instante.</p>
+
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <img src="resources/img/envio.png" alt="Icono Envío" class="feature-image">
+                </div>
+                <h3 class="feature-title">Entrega inmediata</h3>
+                <p class="feature-description">Recibe tus entradas digitales en tu correo electrónico al instante.</p>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">[Soporte]</div>
-                <h3>Soporte 24/7</h3>
-                <p>Nuestro equipo está para ayudarte cuando lo necesites.</p>
+
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <img src="resources/img/servicio_tecnico-removebg-preview.png" alt="Icono Soporte"
+                        class="feature-image">
+                </div>
+                <h3 class="feature-title">Soporte 24/7</h3>
+                <p class="feature-description">Nuestro equipo está listo para ayudarte en cualquier momento que lo
+                    necesites.</p>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer class="main-footer">
-        <h3>Conciertos Conectados</h3>
-        <p>© 2026 Conciertos Conectados. Todos los derechos reservados.</p>
+        <h3>Eventify Campus</h3>
+        <p>© 2026 Enventify Campus. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="js/cliente.js"></script>
 </body>
 
 </html>

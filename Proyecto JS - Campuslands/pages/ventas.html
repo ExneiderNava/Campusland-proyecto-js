@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ventas - Eventify Campus</title>
+    <link rel="icon" href="../resources/img/logo.jpeg">
+    <link rel="stylesheet" href="../css/ventas.css">
+</head>
+
+<body>
+
+    <div class="main-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="dashboard-container">
+            <section class="content">
+                <header class="content-header">
+                    <h1>Ventas</h1>
+                </header>
+
+                <section class="table-container">
+                    <table id="tabla-ventas">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Ciudad</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-ventas">
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-detalle-venta" class="modal-overlay">
+        <div class="eventos-modal-content">
+            <h2>Detalle del Pedido</h2>
+            <div id="contenido-detalle">
+            </div>
+            <button id="btn-cerrar-detalle" class="btn-cancel">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/ventas.js"></script>
+</body>
+
+</html>
