@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Conciertos Conectados</title>
+    <title>Contacto - Eventify Campus</title>
     <link rel="icon" href="../resources/img/logo.jpeg">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/contacto.css">
 </head>
 
 <body>
@@ -36,113 +37,37 @@
         </nav>
     </header>
 
-    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+    <main class="container">
         <section class="contact-section">
-            <div class="contact-header" style="text-align: center; margin-bottom: 40px;">
-                <h2 style="font-size: 2.5rem;">Ponte en <span class="highlight">Contacto</span></h2>
-                <p style="color: #6b7280; margin-top: 10px;">¿Tienes dudas sobre tus entradas o quieres registrar tu
-                    propio evento? Escríbenos.</p>
-            </div>
+            <div class="contact-card">
+                <h2>¿Necesitas ayuda?</h2>
+                <p>Déjanos tus datos y nuestro equipo te contactará pronto.</p>
 
-            <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px;">
-                <div class="contact-info-card"
-                    style="background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.05); height: fit-content;">
-                    <h3 style="margin-bottom: 15px; color: #111827;">Canales de Atención</h3>
-                    <p style="color: #4b5563; font-size: 0.9rem;">Nuestro equipo de soporte responde típicamente en
-                        menos de 2 horas.</p>
-
-                    <div class="info-item" style="display: flex; align-items: flex-start; gap: 15px; margin-top: 25px;">
-                        <span class="info-icon"
-                            style="font-size: 1.3rem; background: #f3f4f6; padding: 8px 12px; border-radius: 10px;">📍</span>
-                        <div>
-                            <h5 style="margin: 0 0 4px 0; color: #1e3a8a; font-size: 0.95rem;">Ubicación Principal</h5>
-                            <p style="margin: 0; color: #4b5563; font-size: 0.88rem;">Campuslands Network, Bucaramanga,
-                                Colombia</p>
-                        </div>
+                <form id="form-contacto">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre" required>
                     </div>
 
-                    <div class="info-item" style="display: flex; align-items: flex-start; gap: 15px; margin-top: 25px;">
-                        <span class="info-icon"
-                            style="font-size: 1.3rem; background: #f3f4f6; padding: 8px 12px; border-radius: 10px;">✉️</span>
-                        <div>
-                            <h5 style="margin: 0 0 4px 0; color: #1e3a8a; font-size: 0.95rem;">Correo Electrónico</h5>
-                            <p style="margin: 0; color: #4b5563; font-size: 0.88rem;">soporte@eventifycampus.com</p>
-                        </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..."
+                            required></textarea>
                     </div>
 
-                    <div class="info-item" style="display: flex; align-items: flex-start; gap: 15px; margin-top: 25px;">
-                        <span class="info-icon"
-                            style="font-size: 1.3rem; background: #f3f4f6; padding: 8px 12px; border-radius: 10px;">📞</span>
-                        <div>
-                            <h5 style="margin: 0 0 4px 0; color: #1e3a8a; font-size: 0.95rem;">Línea Telefónica</h5>
-                            <p style="margin: 0; color: #4b5563; font-size: 0.88rem;">+57 (607) 654-3210</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container"
-                    style="background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.05);">
-                    <form id="form-contacto" onsubmit="enviarMensajeContacto(event)">
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="nombre"
-                                style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: #374151;">Nombre
-                                Completo</label>
-                            <input type="text" id="nombre" placeholder="Escribe tu nombre completo" required
-                                style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="email"
-                                style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: #374151;">Correo
-                                Electrónico</label>
-                            <input type="email" id="email" placeholder="ejemplo@correo.com" required
-                                style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="asunto"
-                                style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: #374151;">Asunto</label>
-                            <select id="asunto"
-                                style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box; background: white;">
-                                <option value="soporte">Problema con mis entradas / Carrito</option>
-                                <option value="organizadores">Soy organizador de eventos</option>
-                                <option value="devoluciones">Solicitud de reembolso</option>
-                                <option value="otros">Otras consultas</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label for="mensaje"
-                                style="display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: #374151;">Mensaje
-                                o Detalles</label>
-                            <textarea id="mensaje" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..." required
-                                style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box; font-family: inherit;"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-primary"
-                            style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer;">Enviar
-                            Mensaje</button>
-                    </form>
-                </div>
+                    <button type="submit" class="btn-primary">Enviar por WhatsApp</button>
+                </form>
             </div>
         </section>
     </main>
 
     <footer class="main-footer">
-        <h3>Conciertos Conectados</h3>
-        <p>© 2026 Conciertos Conectados. Todos los derechos reservados.</p>
+        <h3>Eventify Campus</h3>
+        <p>© 2026 Eventify Campus. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        function enviarMensajeContacto(event) {
-            event.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            alert(`¡Gracias ${nombre}! Tu mensaje ha sido enviado con éxito. Nos comunicaremos contigo al correo: ${email}.`);
-            document.getElementById('form-contacto').reset();
-        }
-    </script>
     <script src="../js/cliente.js"></script>
+    <script src="../js/contacto.js"></script>
 </body>
 
 </html>

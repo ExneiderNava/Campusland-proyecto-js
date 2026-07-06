@@ -1,40 +1,29 @@
-// Variables globales para almacenar el estado de los datos y el carrito
 let todosLosEventos = [];
 let carrito = JSON.parse(localStorage.getItem('carrito_eventos')) || [];
 
-// ==========================================================================
-// MOTOR DE ARRANQUE: ESPERAR A QUE EL DOM ESTÉ COMPLETAMENTE CARGADO
-// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inyectar estilos CSS necesarios para los modales dinámicos
+
     inyectarEstilosCSS();
 
-    // 2. Inyectar estructuras visuales de los modales en el DOM
     inyectarEstructurasModales();
 
-    // 3. Vincular eventos de apertura y cierre del carrito general
     configurarModalCarrito();
 
-    // 4. Sincronizar el contador del carrito en el menú de navegación e ítems guardados
     actualizarInterfazCarrito();
 
-    // 5. Inicializar carga del catálogo y listeners si estamos en la vista de eventos
     const contenedorEventos = document.getElementById('contenedor-eventos');
     if (contenedorEventos) {
         cargarEventos();
         configurarFiltros();
     }
 
-    // 6. Soporte para el formulario de contacto si existe en la página actual
     const formContacto = document.getElementById('form-contacto');
     if (formContacto) {
         formContacto.addEventListener('submit', enviarMensajeContacto);
     }
 });
 
-// ==========================================================================
-// INYECCIÓN DE ESTILOS CSS (Garantiza que se muestren arriba de todo y centrados)
-// ==========================================================================
+
 function inyectarEstilosCSS() {
     if (document.getElementById('modal-styles-dynamic')) return;
 
@@ -91,21 +80,54 @@ function inyectarEstilosCSS() {
     document.head.appendChild(style);
 }
 
-// ==========================================================================
-// OBTENCIÓN Y CONFIGURACIÓN DE DATOS (JSON ASÍNCRONO)
-// ==========================================================================
+
 async function cargarEventos() {
     try {
-        const respuesta = await fetch('data/cliente.json');
-        if (!respuesta.ok) {
-            throw new Error('No se pudo cargar el archivo JSON de eventos');
+        let eventosData = localStorage.getItem('eventos');
+
+        if (eventosData) {
+
+            todosLosEventos = JSON.parse(eventosData);
+            console.log('Eventos cargados desde localStorage');
+        } else {
+            console.log('No hay datos en localStorage, cargando desde JSON...');
+            const respuesta = await fetch('data/cliente.JSON');
+            if (!respuesta.ok) {
+                throw new Error('No se pudo cargar el archivo JSON de eventos');
+            }
+            todosLosEventos = await respuesta.json();
+
+            localStorage.setItem('eventos', JSON.stringify(todosLosEventos));
+            console.log('Eventos cargados desde JSON y guardados en localStorage');
         }
-        todosLosEventos = await respuesta.json();
+        if (!Array.isArray(todosLosEventos) || todosLosEventos.length === 0) {
+            throw new Error('Los datos de eventos no tienen el formato esperado');
+        }
 
         poblarFiltrosSelectors(todosLosEventos);
         renderizarEventos(todosLosEventos);
     } catch (error) {
         console.error('Error al cargar los eventos:', error);
+        const contenedor = document.getElementById('contenedor-eventos');
+        if (contenedor) {
+            contenedor.innerHTML = `
+                <p style="grid-column: 1/-1; text-align: center; color: #ef4444; padding: 40px 0;">
+                    Error al cargar los eventos. Por favor, recarga la página.
+                </p>
+            `;
+        }
+    }
+}
+
+function recargarEventos() {
+    const eventosData = localStorage.getItem('eventos');
+    if (eventosData) {
+        todosLosEventos = JSON.parse(eventosData);
+        poblarFiltrosSelectors(todosLosEventos);
+        renderizarEventos(todosLosEventos);
+        console.log('Eventos recargados desde localStorage');
+    } else {
+        cargarEventos();
     }
 }
 
@@ -114,7 +136,8 @@ function poblarFiltrosSelectors(eventos) {
     const categorySelect = document.getElementById('category-select');
     if (!citySelect || !categorySelect) return;
 
-    if (citySelect.children.length > 1) return;
+    citySelect.innerHTML = '<option value="todos">Todas las ciudades</option>';
+    categorySelect.innerHTML = '<option value="todos">Todas las categorías</option>';
 
     const ciudades = [...new Set(eventos.map(e => e.ciudad))];
     const categorias = [...new Set(eventos.map(e => e.categoria))];
@@ -164,9 +187,7 @@ function filtrarEventos() {
     renderizarEventos(eventosFiltrados);
 }
 
-// ==========================================================================
-// RENDERIZADO DE TARJETAS EN EL DOM
-// ==========================================================================
+
 function renderizarEventos(listaEventos) {
     const contenedor = document.getElementById('contenedor-eventos');
     if (!contenedor) return;
@@ -212,9 +233,7 @@ function renderizarEventos(listaEventos) {
     });
 }
 
-// ==========================================================================
-// CREACIÓN INYECTADA DE MODALES
-// ==========================================================================
+
 function inyectarEstructurasModales() {
     if (!document.getElementById('cart-modal')) {
         const modalOverlay = document.createElement('div');
@@ -237,7 +256,7 @@ function inyectarEstructurasModales() {
                         <span>Total Orden:</span>
                         <span id="cart-total-price" style="color: #1e3a8a;">$ 0</span>
                     </div>
-                    <button id="btn-pay-cart" style="width: 100%; background: #1e3a8a; color: white; border: none; padding: 14px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.2);">Proceder al pago seguro</button>
+                    <button id="btn-pay-cart" style="width: 100%; background: #1e3a8a; color: white; border: none; padding: 14px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.2);">Pagar</button>
                 </div>
             </div>
         `;
@@ -252,9 +271,6 @@ function inyectarEstructurasModales() {
     }
 }
 
-// ==========================================================================
-// VENTANA EMERGENTE CON INFO DEL CONCIERTO (CORREGIDA)
-// ==========================================================================
 function mostrarModalAgregado(evento) {
     const notifOverlay = document.getElementById('notification-modal');
     if (!notifOverlay) return;
@@ -306,9 +322,6 @@ function mostrarModalAgregado(evento) {
     });
 }
 
-// ==========================================================================
-// OPERACIONES DE ESTADO DEL CARRITO DE COMPRAS
-// ==========================================================================
 function configurarModalCarrito() {
     const btnOpen = document.querySelector('.btn-carrito');
     const btnClose = document.getElementById('btn-close-cart');
@@ -437,16 +450,59 @@ function procesarPago() {
         alert("El carrito está vacío, añade eventos primero.");
         return;
     }
-    alert("¡Compra procesada! Redireccionando a la pasarela de pagos segura...");
+
+    let totalCompra = 0;
+    carrito.forEach(item => {
+        totalCompra += item.precio * item.cantidad;
+    });
+
+    const cliente = {
+        nombre: prompt("Ingresa tu nombre completo:", "Cliente Ejemplo"),
+        email: prompt("Ingresa tu correo electrónico:", "cliente@email.com"),
+        telefono: prompt("Ingresa tu número de teléfono:", "3000000000")
+    };
+
+    if (!cliente.nombre || !cliente.email || !cliente.telefono) {
+        alert("Debes completar todos los datos para realizar la compra.");
+        return;
+    }
+
+    const venta = {
+        id: Date.now(),
+        fecha: new Date().toISOString(),
+        cliente: cliente,
+        ciudad: carrito[0]?.ciudad || "No especificada",
+        total: totalCompra,
+        detalles: carrito.map(item => ({
+            id: item.id,
+            nombre: item.titulo,
+            precio: item.precio,
+            cantidad: item.cantidad,
+            subtotal: item.precio * item.cantidad,
+            categoria: item.categoria,
+            ciudad: item.ciudad,
+            fechaEvento: item.fecha,
+            horaEvento: item.hora,
+            imagen: item.imagen
+        })),
+        estado: "Completada"
+    };
+
+    let ventas = JSON.parse(localStorage.getItem('ventas')) || [];
+    ventas.push(venta);
+    localStorage.setItem('ventas', JSON.stringify(ventas));
+    alert(`✅ ¡Compra exitosa, ${cliente.nombre}!\n\n` +
+        `Total pagado: $${totalCompra.toLocaleString()}\n` +
+        `Productos: ${carrito.length} item(s)\n` +
+        `Se ha enviado un comprobante a ${cliente.email}\n\n` +
+        `¡Gracias por tu compra en Eventify Campus! 🎵`);
+
     carrito = [];
     localStorage.removeItem('carrito_eventos');
     actualizarInterfazCarrito();
     document.getElementById('cart-modal').classList.remove('modal-active');
 }
 
-// ==========================================================================
-// SIMULADORES Y ADICIONALES
-// ==========================================================================
 function verDetalle(id) {
     console.log(`Abriendo detalles del evento con ID: ${id}`);
 }

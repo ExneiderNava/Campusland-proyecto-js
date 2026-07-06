@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventify campus</title>
     <link rel="icon" href="../resources/img/logo.jpeg">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/layouts.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body class="login-body">
@@ -22,30 +21,21 @@
         <p>Inicie sesión para acceder a su panel</p>
 
         <form id="form">
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" placeholder="nombre@empresa.com" required>
 
-            <label for="correo">Correo Electrónico</label><br>
-            <input type="email" id="correo" placeholder="nombre@empresa.com">
-
-            <br><br>
-
-            <label for="contrasena">Contraseña</label><br>
-            <input type="password" id="contrasena">
-
-            <br><br>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" required>
 
             <button type="submit">Iniciar Sesión</button>
-
-            <a href="../index.html">Volver</a>
-
+            <a href="../index.html">Volver al inicio</a>
         </form>
-
-        <hr>
-
-
-        <footer>
-            <p>© 2026 Eventify campus</p>
-        </footer>
     </main>
+
+    <footer>
+        <p>© 2026 Eventify campus</p>
+    </footer>
+
     <script src="../js/login.js"></script>
 </body>
 
