@@ -38,3 +38,8 @@ Este proyecto ha sido estructurado, diseñado y desarrollado por el siguiente eq
 
 
 
+ESTA HERRAMIENTA FUE UTILIZADA PARA LA GUIA DEL DESARROLLO DEL PROYECTO (JIRA).
+
+
+
+<img width="1914" height="904" alt="image" src="https://github.com/user-attachments/assets/5422038b-4f18-463f-a267-6af665521f38" />
