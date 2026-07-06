@@ -22,7 +22,7 @@ formulario.addEventListener("submit", function (event) {
         contrasenaInput === usuarioGuardado.contrasena) {
 
         alert("¡Acceso concedido!");
-        window.location.href = "categorias.html";
+        window.location.href = "dasboard.html";
     } else {
         alert("Correo o contraseña incorrectos.");
     }

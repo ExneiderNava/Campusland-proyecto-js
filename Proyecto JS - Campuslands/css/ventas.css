@@ -1,61 +1,9 @@
-/* 1. RESET Y ESTRUCTURA GENERAL */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-html,
-body {
-    height: 100%;
-}
-
 .main-layout {
     display: grid;
     grid-template-columns: 250px 1fr;
     min-height: 100vh;
 }
 
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    background-color: #002663;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.sidebar-header {
-    margin-bottom: 30px;
-}
-
-.sidebar-menu {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.sidebar-menu a {
-    color: #ccc;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.sidebar-menu a.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-}
-
-.sidebar-footer {
-    margin-top: auto;
-}
-
-
-/* 3. CONTENIDO PRINCIPAL */
 .content {
     padding: 40px;
     overflow-y: auto;
@@ -65,7 +13,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* 4. TABLA DE VENTAS */
 .table-container {
     background: white;
     padding: 20px;
@@ -91,7 +38,6 @@ td {
     color: #1e293b;
 }
 
-/* Botones dentro de la tabla (Ver Detalle) */
 table button {
     padding: 6px 12px;
     border: none;
@@ -107,7 +53,6 @@ table button:hover {
     background-color: #cbd5e1;
 }
 
-/* 5. MODAL DE DETALLE */
 .modal-overlay {
     display: none;
     position: fixed;

@@ -1,17 +1,34 @@
 // --- LÓGICA DE EVENTOS ---
 const formEvento = document.getElementById('eventos-form');
 const bodyEventos = document.getElementById('body-eventos');
-const modalEvento = document.getElementById('eventos-modal'); // El overlay
+const modalEvento = document.getElementById('eventos-modal');
 const btnNuevoEvento = document.getElementById('btn-nuevo-evento');
 const btnCancelar = document.getElementById('eventos-btn-cancelar');
 
 // Inicialización
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Cargamos datos iniciales si es la primera vez
+    await cargarDatosIniciales();
+    // 2. Renderizamos la tabla
     renderizarEventos();
+    // 3. Cargamos categorías
     cargarCategoriasEnSelect();
 });
 
-// Abrir modal para nuevo evento (Uso de clase .is-active)
+// Función para cargar JSON a localStorage
+async function cargarDatosIniciales() {
+    if (!localStorage.getItem('eventos')) {
+        try {
+            const response = await fetch('../data/cliente.JSON');
+            const data = await response.json();
+            localStorage.setItem('eventos', JSON.stringify(data));
+        } catch (error) {
+            console.error("Error al cargar cliente.JSON:", error);
+        }
+    }
+}
+
+// Abrir modal para nuevo evento
 btnNuevoEvento.addEventListener('click', () => {
     document.getElementById('eventos-modal-titulo').innerText = "Nuevo Evento";
     formEvento.reset();
@@ -24,54 +41,13 @@ btnCancelar.addEventListener('click', () => {
     modalEvento.classList.remove('is-active');
 });
 
-// Cargar categorías en el select
-function cargarCategoriasEnSelect() {
-    const selectCat = document.getElementById('eventos-categoria');
-    const categorias = JSON.parse(localStorage.getItem('categorias')) || [];
-
-    selectCat.innerHTML = '<option value="">Seleccione una categoría</option>';
-    categorias.forEach(cat => {
-        selectCat.innerHTML += `<option value="${cat.nombre}">${cat.nombre}</option>`;
-    });
-}
-
-// Guardar o Actualizar
-formEvento.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const id = document.getElementById('eventos-id').value;
-    const nuevoEvento = {
-        id: id ? Number(id) : Date.now(),
-        nombre: document.getElementById('eventos-nombre').value,
-        categoria: document.getElementById('eventos-categoria').value,
-        precio: document.getElementById('eventos-precio').value,
-        fechaHora: document.getElementById('eventos-fecha-hora').value,
-        ciudad: document.getElementById('eventos-ciudad').value,
-        imagen: document.getElementById('eventos-img').value,
-        descripcion: document.getElementById('eventos-desc').value
-    };
-
-    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-
-    if (id) {
-        eventos = eventos.map(e => Number(e.id) === Number(nuevoEvento.id) ? nuevoEvento : e);
-    } else {
-        eventos.push(nuevoEvento);
-    }
-
-    localStorage.setItem('eventos', JSON.stringify(eventos));
-    formEvento.reset();
-    modalEvento.classList.remove('is-active'); // Ocultar
-    renderizarEventos();
-});
-
 // Renderizar tabla
 function renderizarEventos() {
     const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
     bodyEventos.innerHTML = eventos.map(e => `
         <tr>
-            <td><img src="${e.imagen}" width="50" alt="img" style="border-radius:5px;"></td>
-            <td>${e.nombre}</td>
+            <td><img src="${e.imagen}" width="50" style="border-radius:4px;"></td>
+            <td>${e.titulo}</td>
             <td>${e.categoria}</td>
             <td>${e.ciudad}</td>
             <td>$${e.precio}</td>
@@ -82,6 +58,34 @@ function renderizarEventos() {
         </tr>
     `).join('');
 }
+
+// Guardar (Crear o Editar)
+formEvento.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+    const id = document.getElementById('eventos-id').value;
+
+    const nuevoEvento = {
+        id: id ? Number(id) : Date.now(),
+        titulo: document.getElementById('eventos-nombre').value,
+        categoria: document.getElementById('eventos-categoria').value,
+        precio: Number(document.getElementById('eventos-precio').value),
+        fecha: document.getElementById('eventos-fecha-hora').value, // Ajustado a JSON
+        ciudad: document.getElementById('eventos-ciudad').value,
+        imagen: document.getElementById('eventos-img').value
+    };
+
+    if (id) {
+        eventos = eventos.map(ev => ev.id === Number(id) ? nuevoEvento : ev);
+    } else {
+        eventos.push(nuevoEvento);
+    }
+
+    localStorage.setItem('eventos', JSON.stringify(eventos));
+    modalEvento.classList.remove('is-active');
+    renderizarEventos();
+    formEvento.reset();
+});
 
 // Eliminar
 window.eliminarEvento = (id) => {
@@ -100,15 +104,22 @@ window.editarEvento = (id) => {
 
     if (ev) {
         document.getElementById('eventos-id').value = ev.id;
-        document.getElementById('eventos-nombre').value = ev.nombre;
+        document.getElementById('eventos-nombre').value = ev.titulo; // Corregido a 'titulo'
         document.getElementById('eventos-categoria').value = ev.categoria;
         document.getElementById('eventos-precio').value = ev.precio;
-        document.getElementById('eventos-fecha-hora').value = ev.fechaHora;
+        document.getElementById('eventos-fecha-hora').value = ev.fecha; // Corregido a 'fecha'
         document.getElementById('eventos-ciudad').value = ev.ciudad;
         document.getElementById('eventos-img').value = ev.imagen;
-        document.getElementById('eventos-desc').value = ev.descripcion;
-
         document.getElementById('eventos-modal-titulo').innerText = "Editar Evento";
-        modalEvento.classList.add('is-active'); // Mostrar
+        modalEvento.classList.add('is-active');
     }
 };
+
+function cargarCategoriasEnSelect() {
+    const selectCat = document.getElementById('eventos-categoria');
+    const categorias = JSON.parse(localStorage.getItem('categorias')) || [];
+    selectCat.innerHTML = '<option value="">Seleccione una categoría</option>';
+    categorias.forEach(cat => {
+        selectCat.innerHTML += `<option value="${cat.nombre}">${cat.nombre}</option>`;
+    });
+}
