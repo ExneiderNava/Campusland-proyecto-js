@@ -3,11 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     configurarEventListeners();
 });
 
-// ==========================================================================
-// CONFIGURACIÓN DE EVENT LISTENERS
-// ==========================================================================
 function configurarEventListeners() {
-    // Cerrar modal con botón
     const btnCerrar = document.getElementById('btn-cerrar-detalle');
     if (btnCerrar) {
         btnCerrar.addEventListener('click', () => {
@@ -15,7 +11,6 @@ function configurarEventListeners() {
         });
     }
 
-    // Cerrar modal al hacer clic fuera
     const modal = document.getElementById('modal-detalle-venta');
     if (modal) {
         modal.addEventListener('click', (e) => {
@@ -25,7 +20,6 @@ function configurarEventListeners() {
         });
     }
 
-    // Cerrar con tecla ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('is-active')) {
             modal.classList.remove('is-active');
@@ -33,19 +27,12 @@ function configurarEventListeners() {
     });
 }
 
-// ==========================================================================
-// 1. OBTENER Y ORDENAR VENTAS
-// ==========================================================================
 function obtenerVentas() {
     const ventas = JSON.parse(localStorage.getItem('ventas')) || [];
 
-    // Ordenar por fecha (más reciente primero)
     return ventas.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 }
 
-// ==========================================================================
-// 2. RENDERIZAR TABLA
-// ==========================================================================
 function cargarVentas() {
     const tbody = document.getElementById('body-ventas');
     const ventas = obtenerVentas();
@@ -87,9 +74,6 @@ function cargarVentas() {
     });
 }
 
-// ==========================================================================
-// 3. VISTA DE DETALLE (Modal)
-// ==========================================================================
 function verDetalle(id) {
     const ventas = obtenerVentas();
     const venta = ventas.find(v => v.id === id);
@@ -151,9 +135,6 @@ function verDetalle(id) {
     modal.classList.add('is-active');
 }
 
-// ==========================================================================
-// 4. ELIMINAR VENTA
-// ==========================================================================
 function eliminarVenta(id) {
     if (confirm('¿Seguro que deseas eliminar esta venta? Esta acción no se puede deshacer.')) {
         let ventas = JSON.parse(localStorage.getItem('ventas')) || [];
@@ -164,9 +145,6 @@ function eliminarVenta(id) {
     }
 }
 
-// ==========================================================================
-// 5. FUNCIONES AUXILIARES
-// ==========================================================================
 function recargarVentas() {
     cargarVentas();
     console.log('Ventas recargadas');

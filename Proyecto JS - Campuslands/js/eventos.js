@@ -1,21 +1,16 @@
-// --- LÓGICA DE EVENTOS ---
+
 const formEvento = document.getElementById('eventos-form');
 const bodyEventos = document.getElementById('body-eventos');
 const modalEvento = document.getElementById('eventos-modal');
 const btnNuevoEvento = document.getElementById('btn-nuevo-evento');
 const btnCancelar = document.getElementById('eventos-btn-cancelar');
 
-// Inicialización
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Cargamos datos iniciales si es la primera vez
     await cargarDatosIniciales();
-    // 2. Renderizamos la tabla
     renderizarEventos();
-    // 3. Cargamos categorías
     cargarCategoriasEnSelect();
 });
 
-// Función para cargar JSON a localStorage
 async function cargarDatosIniciales() {
     if (!localStorage.getItem('eventos')) {
         try {
@@ -28,7 +23,6 @@ async function cargarDatosIniciales() {
     }
 }
 
-// Abrir modal para nuevo evento
 btnNuevoEvento.addEventListener('click', () => {
     document.getElementById('eventos-modal-titulo').innerText = "Nuevo Evento";
     formEvento.reset();
@@ -36,12 +30,9 @@ btnNuevoEvento.addEventListener('click', () => {
     modalEvento.classList.add('is-active');
 });
 
-// Cerrar modal
 btnCancelar.addEventListener('click', () => {
     modalEvento.classList.remove('is-active');
 });
-
-// Renderizar tabla
 function renderizarEventos() {
     const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
     bodyEventos.innerHTML = eventos.map(e => `
@@ -59,7 +50,6 @@ function renderizarEventos() {
     `).join('');
 }
 
-// Guardar (Crear o Editar)
 formEvento.addEventListener('submit', (e) => {
     e.preventDefault();
     let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
@@ -70,7 +60,7 @@ formEvento.addEventListener('submit', (e) => {
         titulo: document.getElementById('eventos-nombre').value,
         categoria: document.getElementById('eventos-categoria').value,
         precio: Number(document.getElementById('eventos-precio').value),
-        fecha: document.getElementById('eventos-fecha-hora').value, // Ajustado a JSON
+        fecha: document.getElementById('eventos-fecha-hora').value,
         ciudad: document.getElementById('eventos-ciudad').value,
         imagen: document.getElementById('eventos-img').value
     };
@@ -87,7 +77,6 @@ formEvento.addEventListener('submit', (e) => {
     formEvento.reset();
 });
 
-// Eliminar
 window.eliminarEvento = (id) => {
     if (confirm('¿Eliminar este evento?')) {
         let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
@@ -97,17 +86,16 @@ window.eliminarEvento = (id) => {
     }
 };
 
-// Editar
 window.editarEvento = (id) => {
     const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
     const ev = eventos.find(e => Number(e.id) === Number(id));
 
     if (ev) {
         document.getElementById('eventos-id').value = ev.id;
-        document.getElementById('eventos-nombre').value = ev.titulo; // Corregido a 'titulo'
+        document.getElementById('eventos-nombre').value = ev.titulo;
         document.getElementById('eventos-categoria').value = ev.categoria;
         document.getElementById('eventos-precio').value = ev.precio;
-        document.getElementById('eventos-fecha-hora').value = ev.fecha; // Corregido a 'fecha'
+        document.getElementById('eventos-fecha-hora').value = ev.fecha;
         document.getElementById('eventos-ciudad').value = ev.ciudad;
         document.getElementById('eventos-img').value = ev.imagen;
         document.getElementById('eventos-modal-titulo').innerText = "Editar Evento";

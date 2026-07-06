@@ -1,33 +1,27 @@
-// ==========================================================================
-// DASHBOARD - ESTADÍSTICAS DESDE LOCALSTORAGE
-// ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarEstadisticas();
 });
 
-// ==========================================================================
-// FUNCIÓN PRINCIPAL PARA CARGAR ESTADÍSTICAS
-// ==========================================================================
+
 function cargarEstadisticas() {
     try {
-        // Obtener datos del localStorage
+
         const ventas = JSON.parse(localStorage.getItem('ventas')) || [];
         const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
         const categorias = JSON.parse(localStorage.getItem('categorias')) || [];
 
-        // Calcular estadísticas
         const totalVentas = ventas.length;
         const totalEventos = eventos.length;
         const totalCategorias = categorias.length;
 
-        // Calcular ingresos totales
+
         let ingresosTotales = 0;
         ventas.forEach(venta => {
             ingresosTotales += venta.total || 0;
         });
 
-        // Calcular ventas del mes actual
+
         const fechaActual = new Date();
         const mesActual = fechaActual.getMonth();
         const añoActual = fechaActual.getFullYear();
@@ -40,7 +34,6 @@ function cargarEstadisticas() {
 
         const ingresosMes = ventasMes.reduce((total, venta) => total + (venta.total || 0), 0);
 
-        // Actualizar el DOM
         actualizarEstadisticas({
             totalVentas,
             totalEventos,
@@ -51,10 +44,8 @@ function cargarEstadisticas() {
             ultimasVentas: ventas.slice(0, 5)
         });
 
-        // Renderizar últimas ventas
         renderizarUltimasVentas(ventas.slice(0, 5));
 
-        // Actualizar el contador de ventas en el sidebar si existe
         actualizarSidebar();
 
     } catch (error) {
@@ -63,11 +54,8 @@ function cargarEstadisticas() {
     }
 }
 
-// ==========================================================================
-// ACTUALIZAR ESTADÍSTICAS EN EL DOM
-// ==========================================================================
 function actualizarEstadisticas(stats) {
-    // Actualizar tarjetas principales
+
     const statVentas = document.getElementById('stat-ventas');
     const statEventos = document.getElementById('stat-eventos');
     const statCategorias = document.getElementById('stat-categorias');
@@ -79,7 +67,6 @@ function actualizarEstadisticas(stats) {
     if (statEventos) statEventos.textContent = stats.totalEventos;
     if (statCategorias) statCategorias.textContent = stats.totalCategorias;
 
-    // Actualizar tarjeta de ingresos si existe
     const statIngresos = document.getElementById('stat-ingresos');
     const infoMes = document.querySelector('.info-mes');
     if (statIngresos) {
@@ -90,9 +77,6 @@ function actualizarEstadisticas(stats) {
     }
 }
 
-// ==========================================================================
-// RENDERIZAR ÚLTIMAS VENTAS
-// ==========================================================================
 function renderizarUltimasVentas(ventas) {
     const container = document.getElementById('ultimas-ventas-container');
     const tbody = document.getElementById('ultimas-ventas-body');
@@ -137,7 +121,6 @@ function renderizarUltimasVentas(ventas) {
 
     tbody.innerHTML = html;
 
-    // Actualizar resumen del mes
     const ventasMes = ventas.filter(v => {
         const fechaVenta = new Date(v.fecha);
         const ahora = new Date();
@@ -156,9 +139,6 @@ function renderizarUltimasVentas(ventas) {
     }
 }
 
-// ==========================================================================
-// ACTUALIZAR SIDEBAR
-// ==========================================================================
 function actualizarSidebar() {
     const ventas = JSON.parse(localStorage.getItem('ventas')) || [];
     const badgeVentas = document.querySelector('.badge-ventas');
@@ -167,9 +147,7 @@ function actualizarSidebar() {
     }
 }
 
-// ==========================================================================
-// MOSTRAR ERROR
-// ==========================================================================
+
 function mostrarError(mensaje) {
     const container = document.querySelector('.content');
     if (container) {

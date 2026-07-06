@@ -1,39 +1,26 @@
-// Variables globales
 let todasLasCategorias = [];
 const modal = document.getElementById('modal-categoria');
 const formCategoria = document.getElementById('form-categoria');
 
-// ==========================================================================
-// INICIALIZACIÓN
-// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     cargarCategorias();
     configurarEventListeners();
 });
 
-// ==========================================================================
-// CARGA DE CATEGORÍAS DESDE LOCALSTORAGE O JSON
-// ==========================================================================
 async function cargarCategorias() {
     try {
-        // Intentar obtener datos del localStorage primero
         let categoriasData = localStorage.getItem('categorias');
 
         if (categoriasData) {
-            // Si hay datos en localStorage, usarlos
             todasLasCategorias = JSON.parse(categoriasData);
             console.log('Categorías cargadas desde localStorage');
         } else {
-            // Si no hay datos en localStorage, cargar desde el JSON y guardar
             console.log('No hay datos en localStorage, cargando categorías desde JSON...');
 
-            // Intentar cargar desde la ruta correcta
             let response;
             try {
-                // Primero intentar con la ruta relativa
                 response = await fetch('../data/categorias.json');
             } catch (e) {
-                // Si falla, intentar con otra ruta
                 response = await fetch('data/categorias.json');
             }
 
@@ -43,30 +30,22 @@ async function cargarCategorias() {
 
             todasLasCategorias = await response.json();
 
-            // Verificar que los datos tengan el formato correcto
             if (!Array.isArray(todasLasCategorias) || todasLasCategorias.length === 0) {
                 throw new Error('Los datos de categorías no tienen el formato esperado');
             }
-
-            // Guardar los datos en localStorage para futuras visitas
             localStorage.setItem('categorias', JSON.stringify(todasLasCategorias));
             console.log('Categorías cargadas desde JSON y guardadas en localStorage');
         }
 
-        // Renderizar las categorías
         renderizarCategorias();
 
     } catch (error) {
         console.error('Error al cargar las categorías:', error);
 
-        // Si hay un error, intentar cargar categorías por defecto
         cargarCategoriasPorDefecto();
     }
 }
 
-// ==========================================================================
-// CATEGORÍAS POR DEFECTO (FALLBACK)
-// ==========================================================================
 function cargarCategoriasPorDefecto() {
     const categoriasPorDefecto = [
         { id: 1, nombre: "Rock", desc: "Eventos de música rock, bandas en vivo y festivales de rock." },
@@ -85,11 +64,9 @@ function cargarCategoriasPorDefecto() {
     renderizarCategorias();
 }
 
-// ==========================================================================
-// CONFIGURACIÓN DE EVENT LISTENERS
-// ==========================================================================
+
 function configurarEventListeners() {
-    // Botón para nueva categoría
+
     const btnNueva = document.getElementById('btn-nueva-categoria');
     if (btnNueva) {
         btnNueva.addEventListener('click', () => {
@@ -100,21 +77,17 @@ function configurarEventListeners() {
         });
     }
 
-    // Cerrar modal al hacer clic fuera
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             cerrarModal();
         }
     });
-
-    // Cerrar modal con tecla ESC
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && modal.classList.contains('is-active')) {
             cerrarModal();
         }
     });
 
-    // Formulario de categorías
     if (formCategoria) {
         formCategoria.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -123,9 +96,6 @@ function configurarEventListeners() {
     }
 }
 
-// ==========================================================================
-// FUNCIONES PARA ABRIR Y CERRAR MODAL
-// ==========================================================================
 function abrirModal() {
     modal.classList.add('is-active');
     modal.style.display = 'flex';
@@ -136,21 +106,16 @@ function cerrarModal() {
     modal.style.display = 'none';
 }
 
-// ==========================================================================
-// OPERACIONES CRUD DE CATEGORÍAS
-// ==========================================================================
 function guardarCategoria() {
     const id = document.getElementById('cat-id').value;
     const nombre = document.getElementById('cat-nombre').value.trim();
     const desc = document.getElementById('cat-desc').value.trim();
 
-    // Validar que el nombre no esté vacío
     if (!nombre) {
         alert('El nombre de la categoría es obligatorio');
         return;
     }
 
-    // Validar que no exista una categoría con el mismo nombre (excepto si es la misma)
     const categoriasExistentes = JSON.parse(localStorage.getItem('categorias')) || [];
     const nombreExistente = categoriasExistentes.find(c =>
         c.nombre.toLowerCase() === nombre.toLowerCase() &&
@@ -165,11 +130,9 @@ function guardarCategoria() {
     let categorias = JSON.parse(localStorage.getItem('categorias')) || [];
 
     if (id) {
-        // Editar categoría existente
         categorias = categorias.map(c => c.id == id ? { id: Number(id), nombre, desc } : c);
         alert('Categoría actualizada correctamente');
     } else {
-        // Crear nueva categoría
         const nuevoId = Date.now();
         categorias.push({ id: nuevoId, nombre, desc });
         alert('Categoría creada correctamente');
@@ -211,13 +174,8 @@ function renderizarCategorias() {
     `).join('');
 }
 
-// ==========================================================================
-// FUNCIONES GLOBALES PARA EL CRUD (window)
-// ==========================================================================
 window.eliminarCategoria = (id) => {
     const idNum = Number(id);
-
-    // Verificar si la categoría está siendo utilizada por algún evento
     const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
     const categoriaEnUso = eventos.some(e => e.categoria === idNum || e.categoria === id);
 
@@ -254,9 +212,6 @@ window.editarCategoria = (id) => {
     abrirModal();
 };
 
-// ==========================================================================
-// FUNCIÓN AUXILIAR PARA RECARGAR CATEGORÍAS
-// ==========================================================================
 function recargarCategorias() {
     const categoriasData = localStorage.getItem('categorias');
     if (categoriasData) {

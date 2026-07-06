@@ -1,37 +1,29 @@
 let todosLosEventos = [];
 let carrito = JSON.parse(localStorage.getItem('carrito_eventos')) || [];
 
-// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inyectar estilos CSS necesarios para los modales dinámicos
+
     inyectarEstilosCSS();
 
-    // 2. Inyectar estructuras visuales de los modales en el DOM
     inyectarEstructurasModales();
 
-    // 3. Vincular eventos de apertura y cierre del carrito general
     configurarModalCarrito();
 
-    // 4. Sincronizar el contador del carrito en el menú de navegación e ítems guardados
     actualizarInterfazCarrito();
 
-    // 5. Inicializar carga del catálogo y listeners si estamos en la vista de eventos
     const contenedorEventos = document.getElementById('contenedor-eventos');
     if (contenedorEventos) {
         cargarEventos();
         configurarFiltros();
     }
 
-    // 6. Soporte para el formulario de contacto si existe en la página actual
     const formContacto = document.getElementById('form-contacto');
     if (formContacto) {
         formContacto.addEventListener('submit', enviarMensajeContacto);
     }
 });
 
-// ==========================================================================
-// INYECCIÓN DE ESTILOS CSS (Garantiza que se muestren arriba de todo y centrados)
-// ==========================================================================
+
 function inyectarEstilosCSS() {
     if (document.getElementById('modal-styles-dynamic')) return;
 
@@ -88,20 +80,16 @@ function inyectarEstilosCSS() {
     document.head.appendChild(style);
 }
 
-// ==========================================================================
-// OBTENCIÓN Y CONFIGURACIÓN DE DATOS (desde localStorage o JSON)
-// ==========================================================================
+
 async function cargarEventos() {
     try {
-        // Intentar obtener datos del localStorage primero
         let eventosData = localStorage.getItem('eventos');
 
         if (eventosData) {
-            // Si hay datos en localStorage, usarlos
+
             todosLosEventos = JSON.parse(eventosData);
             console.log('Eventos cargados desde localStorage');
         } else {
-            // Si no hay datos en localStorage, cargar desde el JSON y guardar
             console.log('No hay datos en localStorage, cargando desde JSON...');
             const respuesta = await fetch('data/cliente.JSON');
             if (!respuesta.ok) {
@@ -109,12 +97,9 @@ async function cargarEventos() {
             }
             todosLosEventos = await respuesta.json();
 
-            // Guardar los datos en localStorage para futuras visitas
             localStorage.setItem('eventos', JSON.stringify(todosLosEventos));
             console.log('Eventos cargados desde JSON y guardados en localStorage');
         }
-
-        // Verificar que los datos tengan el formato correcto
         if (!Array.isArray(todosLosEventos) || todosLosEventos.length === 0) {
             throw new Error('Los datos de eventos no tienen el formato esperado');
         }
@@ -123,7 +108,6 @@ async function cargarEventos() {
         renderizarEventos(todosLosEventos);
     } catch (error) {
         console.error('Error al cargar los eventos:', error);
-        // Mostrar un mensaje de error amigable al usuario
         const contenedor = document.getElementById('contenedor-eventos');
         if (contenedor) {
             contenedor.innerHTML = `
@@ -135,7 +119,6 @@ async function cargarEventos() {
     }
 }
 
-// Función auxiliar para recargar eventos desde localStorage (útil después de cambios)
 function recargarEventos() {
     const eventosData = localStorage.getItem('eventos');
     if (eventosData) {
@@ -144,7 +127,6 @@ function recargarEventos() {
         renderizarEventos(todosLosEventos);
         console.log('Eventos recargados desde localStorage');
     } else {
-        // Si por algún motivo no hay datos, intentar cargar desde JSON
         cargarEventos();
     }
 }
@@ -154,7 +136,6 @@ function poblarFiltrosSelectors(eventos) {
     const categorySelect = document.getElementById('category-select');
     if (!citySelect || !categorySelect) return;
 
-    // Limpiar opciones existentes (mantener solo el option "Todos")
     citySelect.innerHTML = '<option value="todos">Todas las ciudades</option>';
     categorySelect.innerHTML = '<option value="todos">Todas las categorías</option>';
 
@@ -206,9 +187,7 @@ function filtrarEventos() {
     renderizarEventos(eventosFiltrados);
 }
 
-// ==========================================================================
-// RENDERIZADO DE TARJETAS EN EL DOM
-// ==========================================================================
+
 function renderizarEventos(listaEventos) {
     const contenedor = document.getElementById('contenedor-eventos');
     if (!contenedor) return;
@@ -254,9 +233,7 @@ function renderizarEventos(listaEventos) {
     });
 }
 
-// ==========================================================================
-// CREACIÓN INYECTADA DE MODALES
-// ==========================================================================
+
 function inyectarEstructurasModales() {
     if (!document.getElementById('cart-modal')) {
         const modalOverlay = document.createElement('div');
@@ -294,9 +271,6 @@ function inyectarEstructurasModales() {
     }
 }
 
-// ==========================================================================
-// VENTANA EMERGENTE CON INFO DEL CONCIERTO (CORREGIDA)
-// ==========================================================================
 function mostrarModalAgregado(evento) {
     const notifOverlay = document.getElementById('notification-modal');
     if (!notifOverlay) return;
@@ -348,9 +322,6 @@ function mostrarModalAgregado(evento) {
     });
 }
 
-// ==========================================================================
-// OPERACIONES DE ESTADO DEL CARRITO DE COMPRAS
-// ==========================================================================
 function configurarModalCarrito() {
     const btnOpen = document.querySelector('.btn-carrito');
     const btnClose = document.getElementById('btn-close-cart');
@@ -474,35 +445,28 @@ function actualizarInterfazCarrito() {
     }
 }
 
-// ==========================================================================
-// PROCESAR PAGO - GUARDAR VENTA EN LOCALSTORAGE
-// ==========================================================================
 function procesarPago() {
     if (carrito.length === 0) {
         alert("El carrito está vacío, añade eventos primero.");
         return;
     }
 
-    // Calcular el total de la compra
     let totalCompra = 0;
     carrito.forEach(item => {
         totalCompra += item.precio * item.cantidad;
     });
 
-    // Obtener el cliente (simulado - en una app real vendría de un formulario)
     const cliente = {
         nombre: prompt("Ingresa tu nombre completo:", "Cliente Ejemplo"),
         email: prompt("Ingresa tu correo electrónico:", "cliente@email.com"),
         telefono: prompt("Ingresa tu número de teléfono:", "3000000000")
     };
 
-    // Si el usuario cancela el prompt, no continuar
     if (!cliente.nombre || !cliente.email || !cliente.telefono) {
         alert("Debes completar todos los datos para realizar la compra.");
         return;
     }
 
-    // Crear el objeto venta
     const venta = {
         id: Date.now(),
         fecha: new Date().toISOString(),
@@ -524,28 +488,21 @@ function procesarPago() {
         estado: "Completada"
     };
 
-    // Guardar la venta en localStorage
     let ventas = JSON.parse(localStorage.getItem('ventas')) || [];
     ventas.push(venta);
     localStorage.setItem('ventas', JSON.stringify(ventas));
-
-    // Mostrar mensaje de éxito
     alert(`✅ ¡Compra exitosa, ${cliente.nombre}!\n\n` +
         `Total pagado: $${totalCompra.toLocaleString()}\n` +
         `Productos: ${carrito.length} item(s)\n` +
         `Se ha enviado un comprobante a ${cliente.email}\n\n` +
         `¡Gracias por tu compra en Eventify Campus! 🎵`);
 
-    // Limpiar el carrito
     carrito = [];
     localStorage.removeItem('carrito_eventos');
     actualizarInterfazCarrito();
     document.getElementById('cart-modal').classList.remove('modal-active');
 }
 
-// ==========================================================================
-// SIMULADORES Y ADICIONALES
-// ==========================================================================
 function verDetalle(id) {
     console.log(`Abriendo detalles del evento con ID: ${id}`);
 }
