@@ -2,7 +2,7 @@ const formulario = document.querySelector("#form");
 
 window.addEventListener("DOMContentLoaded", () => {
     const usuarioAdmin = {
-        correo: "admin@gmail.com",
+        correo: "admin@mail.com",
         contrasena: "1234"
     };
     localStorage.setItem("usuario", JSON.stringify(usuarioAdmin));
