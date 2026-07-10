@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de ventas</title>
+    <link rel="icon" href="../resources/img/logo.jpeg">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/reporte_ventas.css">
+</head>
+
+<body>
+
+    <div class="main-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="dashboard-container">
+            <div class="content">
+                <div class="filtros-panel">
+                    <div class="filtros-header">
+                        <h3>🔍 Filtrar por rango de fechas</h3>
+                    </div>
+                    <div class="filtros-body">
+                        <div class="filtro-grupo">
+                            <label for="fecha-inicio">Fecha inicio:</label>
+                            <input type="date" id="fecha-inicio">
+                        </div>
+                        <div class="filtro-grupo">
+                            <label for="fecha-fin">Fecha fin:</label>
+                            <input type="date" id="fecha-fin">
+                        </div>
+                        <div class="filtro-acciones">
+                            <button id="btn-limpiar" class="btn-limpiar">🗑️ Limpiar</button>
+                        </div>
+                    </div>
+                    <div class="filtros-resultados">
+                        <span id="ventas-filtradas-count">Mostrando: <strong>0</strong> ventas</span>
+                        <span id="ventas-filtradas-total">Total: <strong>$0</strong></span>
+                    </div>
+                </div>
+
+                <div id="tabla-ventas-container" class="ventas-container">
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+
+    <script src="../js/main.js"></script>
+    <script src="../js/reporte_ventas.js"></script>
+</body>
+
+</html>

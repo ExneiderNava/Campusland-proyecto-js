@@ -162,7 +162,7 @@ function renderizarCategorias() {
         return;
     }
 
-    tablaBody.innerHTML = categorias.map(c => `
+    tablaBody.in = categorias.map(c => `
         <tr>
             <td><strong>${c.nombre}</strong></td>
             <td>${c.desc || 'Sin descripción'}</td>
