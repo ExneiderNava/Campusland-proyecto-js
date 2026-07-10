@@ -1,0 +1,570 @@
+[
+    {
+        "id": 1702345678901,
+        "fecha": "2026-01-15T14:30:00.000Z",
+        "cliente": {
+            "nombre": "María González",
+            "email": "maria.gonzalez@email.com",
+            "telefono": "3104567890"
+        },
+        "ciudad": "Bogotá",
+        "total": 180000,
+        "detalles": [
+            {
+                "id": 1,
+                "nombre": "Festival de Música Electrónica",
+                "precio": 120000,
+                "cantidad": 1,
+                "subtotal": 120000,
+                "categoria": "Música",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-02-14",
+                "horaEvento": "20:00",
+                "imagen": "https://example.com/festival-electronica.jpg"
+            },
+            {
+                "id": 5,
+                "nombre": "After Party Oficial",
+                "precio": 60000,
+                "cantidad": 1,
+                "subtotal": 60000,
+                "categoria": "Fiesta",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-02-15",
+                "horaEvento": "23:00",
+                "imagen": "https://example.com/after-party.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678902,
+        "fecha": "2026-01-16T10:15:00.000Z",
+        "cliente": {
+            "nombre": "Carlos Rodríguez",
+            "email": "carlos.rodriguez@email.com",
+            "telefono": "3201234567"
+        },
+        "ciudad": "Medellín",
+        "total": 280000,
+        "detalles": [
+            {
+                "id": 3,
+                "nombre": "Concierto de Rock Sinfónico",
+                "precio": 150000,
+                "cantidad": 2,
+                "subtotal": 300000,
+                "categoria": "Música",
+                "ciudad": "Medellín",
+                "fechaEvento": "2026-03-01",
+                "horaEvento": "19:30",
+                "imagen": "https://example.com/rock-sinfonico.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678903,
+        "fecha": "2026-01-17T09:45:00.000Z",
+        "cliente": {
+            "nombre": "Ana Martínez",
+            "email": "ana.martinez@email.com",
+            "telefono": "3009876543"
+        },
+        "ciudad": "Cali",
+        "total": 95000,
+        "detalles": [
+            {
+                "id": 7,
+                "nombre": "Obra de Teatro: La Vida es Sueño",
+                "precio": 45000,
+                "cantidad": 2,
+                "subtotal": 90000,
+                "categoria": "Teatro",
+                "ciudad": "Cali",
+                "fechaEvento": "2026-02-20",
+                "horaEvento": "18:00",
+                "imagen": "https://example.com/teatro-vida-sueno.jpg"
+            },
+            {
+                "id": 8,
+                "nombre": "Cata de Vinos Premium",
+                "precio": 5000,
+                "cantidad": 1,
+                "subtotal": 5000,
+                "categoria": "Gastronomía",
+                "ciudad": "Cali",
+                "fechaEvento": "2026-02-21",
+                "horaEvento": "17:00",
+                "imagen": "https://example.com/cata-vinos.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678904,
+        "fecha": "2026-01-18T16:20:00.000Z",
+        "cliente": {
+            "nombre": "Laura Pérez",
+            "email": "laura.perez@email.com",
+            "telefono": "3112345678"
+        },
+        "ciudad": "Barranquilla",
+        "total": 520000,
+        "detalles": [
+            {
+                "id": 10,
+                "nombre": "Carnaval de Barranquilla - VIP",
+                "precio": 520000,
+                "cantidad": 1,
+                "subtotal": 520000,
+                "categoria": "Festival",
+                "ciudad": "Barranquilla",
+                "fechaEvento": "2026-02-28",
+                "horaEvento": "14:00",
+                "imagen": "https://example.com/carnaval-barranquilla.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678905,
+        "fecha": "2026-01-19T11:30:00.000Z",
+        "cliente": {
+            "nombre": "Diego Ramírez",
+            "email": "diego.ramirez@email.com",
+            "telefono": "3156789012"
+        },
+        "ciudad": "Bogotá",
+        "total": 340000,
+        "detalles": [
+            {
+                "id": 2,
+                "nombre": "Feria Internacional del Libro",
+                "precio": 40000,
+                "cantidad": 3,
+                "subtotal": 120000,
+                "categoria": "Cultura",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-04-20",
+                "horaEvento": "10:00",
+                "imagen": "https://example.com/feria-libro.jpg"
+            },
+            {
+                "id": 6,
+                "nombre": "Conferencia de Innovación Tech",
+                "precio": 110000,
+                "cantidad": 2,
+                "subtotal": 220000,
+                "categoria": "Tecnología",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-03-15",
+                "horaEvento": "09:00",
+                "imagen": "https://example.com/innovacion-tech.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678906,
+        "fecha": "2026-01-20T08:00:00.000Z",
+        "cliente": {
+            "nombre": "Sofía Torres",
+            "email": "sofia.torres@email.com",
+            "telefono": "3209876543"
+        },
+        "ciudad": "Medellín",
+        "total": 75000,
+        "detalles": [
+            {
+                "id": 12,
+                "nombre": "Taller de Fotografía Creativa",
+                "precio": 75000,
+                "cantidad": 1,
+                "subtotal": 75000,
+                "categoria": "Educación",
+                "ciudad": "Medellín",
+                "fechaEvento": "2026-03-10",
+                "horaEvento": "14:00",
+                "imagen": "https://example.com/taller-fotografia.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678907,
+        "fecha": "2026-01-21T13:45:00.000Z",
+        "cliente": {
+            "nombre": "Javier Castro",
+            "email": "javier.castro@email.com",
+            "telefono": "3123456789"
+        },
+        "ciudad": "Bogotá",
+        "total": 210000,
+        "detalles": [
+            {
+                "id": 4,
+                "nombre": "Exposición de Arte Contemporáneo",
+                "precio": 70000,
+                "cantidad": 3,
+                "subtotal": 210000,
+                "categoria": "Arte",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-05-05",
+                "horaEvento": "11:00",
+                "imagen": "https://example.com/expo-arte.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678908,
+        "fecha": "2026-01-22T15:10:00.000Z",
+        "cliente": {
+            "nombre": "Valentina Duque",
+            "email": "valentina.duque@email.com",
+            "telefono": "3056789012"
+        },
+        "ciudad": "Cali",
+        "total": 180000,
+        "detalles": [
+            {
+                "id": 9,
+                "nombre": "Festival de Salsa",
+                "precio": 90000,
+                "cantidad": 2,
+                "subtotal": 180000,
+                "categoria": "Música",
+                "ciudad": "Cali",
+                "fechaEvento": "2026-03-25",
+                "horaEvento": "21:00",
+                "imagen": "https://example.com/festival-salsa.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678909,
+        "fecha": "2026-01-23T12:00:00.000Z",
+        "cliente": {
+            "nombre": "Andrés Moreno",
+            "email": "andres.moreno@email.com",
+            "telefono": "3110987654"
+        },
+        "ciudad": "Barranquilla",
+        "total": 430000,
+        "detalles": [
+            {
+                "id": 11,
+                "nombre": "Concierto de Reguetón",
+                "precio": 215000,
+                "cantidad": 2,
+                "subtotal": 430000,
+                "categoria": "Música",
+                "ciudad": "Barranquilla",
+                "fechaEvento": "2026-04-10",
+                "horaEvento": "20:00",
+                "imagen": "https://example.com/regueton-concierto.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678910,
+        "fecha": "2026-01-24T17:30:00.000Z",
+        "cliente": {
+            "nombre": "Carolina Herrera",
+            "email": "carolina.herrera@email.com",
+            "telefono": "3167890123"
+        },
+        "ciudad": "Medellín",
+        "total": 125000,
+        "detalles": [
+            {
+                "id": 13,
+                "nombre": "Clase Magistral de Cocina Italiana",
+                "precio": 125000,
+                "cantidad": 1,
+                "subtotal": 125000,
+                "categoria": "Gastronomía",
+                "ciudad": "Medellín",
+                "fechaEvento": "2026-03-18",
+                "horaEvento": "16:00",
+                "imagen": "https://example.com/cocina-italiana.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678911,
+        "fecha": "2026-01-25T10:20:00.000Z",
+        "cliente": {
+            "nombre": "Felipe Santos",
+            "email": "felipe.santos@email.com",
+            "telefono": "3187654321"
+        },
+        "ciudad": "Bogotá",
+        "total": 460000,
+        "detalles": [
+            {
+                "id": 14,
+                "nombre": "Tour Gastronómico por Bogotá",
+                "precio": 230000,
+                "cantidad": 2,
+                "subtotal": 460000,
+                "categoria": "Gastronomía",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-04-25",
+                "horaEvento": "12:00",
+                "imagen": "https://example.com/tour-gastronomico.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678912,
+        "fecha": "2026-01-26T14:50:00.000Z",
+        "cliente": {
+            "nombre": "Daniela Ríos",
+            "email": "daniela.rios@email.com",
+            "telefono": "3210987654"
+        },
+        "ciudad": "Cali",
+        "total": 95000,
+        "detalles": [
+            {
+                "id": 15,
+                "nombre": "Funciones de Cine al Aire Libre",
+                "precio": 25000,
+                "cantidad": 2,
+                "subtotal": 50000,
+                "categoria": "Cine",
+                "ciudad": "Cali",
+                "fechaEvento": "2026-05-15",
+                "horaEvento": "19:00",
+                "imagen": "https://example.com/cine-aire-libre.jpg"
+            },
+            {
+                "id": 16,
+                "nombre": "Noche de Museo",
+                "precio": 45000,
+                "cantidad": 1,
+                "subtotal": 45000,
+                "categoria": "Cultura",
+                "ciudad": "Cali",
+                "fechaEvento": "2026-05-16",
+                "horaEvento": "20:00",
+                "imagen": "https://example.com/noche-museo.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678913,
+        "fecha": "2026-01-27T09:30:00.000Z",
+        "cliente": {
+            "nombre": "Mateo Jiménez",
+            "email": "mateo.jimenez@email.com",
+            "telefono": "3105432109"
+        },
+        "ciudad": "Barranquilla",
+        "total": 200000,
+        "detalles": [
+            {
+                "id": 17,
+                "nombre": "Torneo de Póker Profesional",
+                "precio": 200000,
+                "cantidad": 1,
+                "subtotal": 200000,
+                "categoria": "Juegos",
+                "ciudad": "Barranquilla",
+                "fechaEvento": "2026-06-01",
+                "horaEvento": "15:00",
+                "imagen": "https://example.com/poker-torneo.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678914,
+        "fecha": "2026-01-28T16:40:00.000Z",
+        "cliente": {
+            "nombre": "Natalia Vargas",
+            "email": "natalia.vargas@email.com",
+            "telefono": "3134567890"
+        },
+        "ciudad": "Bogotá",
+        "total": 320000,
+        "detalles": [
+            {
+                "id": 18,
+                "nombre": "Maratón de Comedia Stand Up",
+                "precio": 80000,
+                "cantidad": 4,
+                "subtotal": 320000,
+                "categoria": "Comedia",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-05-20",
+                "horaEvento": "20:30",
+                "imagen": "https://example.com/standup-comedia.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678915,
+        "fecha": "2026-01-29T11:00:00.000Z",
+        "cliente": {
+            "nombre": "Esteban León",
+            "email": "esteban.leon@email.com",
+            "telefono": "3223456789"
+        },
+        "ciudad": "Medellín",
+        "total": 540000,
+        "detalles": [
+            {
+                "id": 19,
+                "nombre": "Experiencia VIP F1",
+                "precio": 540000,
+                "cantidad": 1,
+                "subtotal": 540000,
+                "categoria": "Deportes",
+                "ciudad": "Medellín",
+                "fechaEvento": "2026-06-15",
+                "horaEvento": "10:00",
+                "imagen": "https://example.com/f1-vip.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678916,
+        "fecha": "2026-01-30T18:30:00.000Z",
+        "cliente": {
+            "nombre": "Gabriela Díaz",
+            "email": "gabriela.diaz@email.com",
+            "telefono": "3178901234"
+        },
+        "ciudad": "Cali",
+        "total": 270000,
+        "detalles": [
+            {
+                "id": 20,
+                "nombre": "Festival de Jazz de Cali",
+                "precio": 90000,
+                "cantidad": 3,
+                "subtotal": 270000,
+                "categoria": "Música",
+                "ciudad": "Cali",
+                "fechaEvento": "2026-06-20",
+                "horaEvento": "19:00",
+                "imagen": "https://example.com/festival-jazz.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678917,
+        "fecha": "2026-02-01T08:45:00.000Z",
+        "cliente": {
+            "nombre": "Ricardo Mendoza",
+            "email": "ricardo.mendoza@email.com",
+            "telefono": "3108765432"
+        },
+        "ciudad": "Bogotá",
+        "total": 150000,
+        "detalles": [
+            {
+                "id": 21,
+                "nombre": "Seminario de Finanzas Personales",
+                "precio": 150000,
+                "cantidad": 1,
+                "subtotal": 150000,
+                "categoria": "Educación",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-07-10",
+                "horaEvento": "09:00",
+                "imagen": "https://example.com/seminario-finanzas.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678918,
+        "fecha": "2026-02-02T13:20:00.000Z",
+        "cliente": {
+            "nombre": "Elena Sánchez",
+            "email": "elena.sanchez@email.com",
+            "telefono": "3204567890"
+        },
+        "ciudad": "Barranquilla",
+        "total": 630000,
+        "detalles": [
+            {
+                "id": 22,
+                "nombre": "Paquete Carnaval 2026",
+                "precio": 630000,
+                "cantidad": 1,
+                "subtotal": 630000,
+                "categoria": "Festival",
+                "ciudad": "Barranquilla",
+                "fechaEvento": "2026-02-28",
+                "horaEvento": "08:00",
+                "imagen": "https://example.com/paquete-carnaval.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678919,
+        "fecha": "2026-02-03T10:10:00.000Z",
+        "cliente": {
+            "nombre": "Pablo Herrera",
+            "email": "pablo.herrera@email.com",
+            "telefono": "3156789123"
+        },
+        "ciudad": "Medellín",
+        "total": 380000,
+        "detalles": [
+            {
+                "id": 23,
+                "nombre": "Festival de Flores - Zona VIP",
+                "precio": 380000,
+                "cantidad": 1,
+                "subtotal": 380000,
+                "categoria": "Festival",
+                "ciudad": "Medellín",
+                "fechaEvento": "2026-08-10",
+                "horaEvento": "09:00",
+                "imagen": "https://example.com/festival-flores.jpg"
+            }
+        ],
+        "estado": "Completada"
+    },
+    {
+        "id": 1702345678920,
+        "fecha": "2026-02-04T15:50:00.000Z",
+        "cliente": {
+            "nombre": "Camila Rodríguez",
+            "email": "camila.rodriguez@email.com",
+            "telefono": "3112233445"
+        },
+        "ciudad": "Bogotá",
+        "total": 175000,
+        "detalles": [
+            {
+                "id": 24,
+                "nombre": "Workshop de Marketing Digital",
+                "precio": 175000,
+                "cantidad": 1,
+                "subtotal": 175000,
+                "categoria": "Tecnología",
+                "ciudad": "Bogotá",
+                "fechaEvento": "2026-07-25",
+                "horaEvento": "14:00",
+                "imagen": "https://example.com/marketing-digital.jpg"
+            }
+        ],
+        "estado": "Completada"
+    }
+]
