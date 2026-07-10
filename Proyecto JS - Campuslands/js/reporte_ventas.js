@@ -76,12 +76,33 @@ function mostrarVentas(ventas) {
         `;
         return;
     }
+    const ventasPorEvento = {};
+    ventas.forEach(venta => {
+        venta.detalles.forEach(detalle => {
+            const key = detalle.id;
+            if (!ventasPorEvento[key]) {
+                ventasPorEvento[key] = {
+                    id: detalle.id,
+                    nombre: detalle.nombre,
+                    categoria: detalle.categoria,
+                    ciudad: detalle.ciudad,
+                    precio: detalle.precio,
+                    cantidad: 0,
+                    total: 0
+                };
+            }
+            ventasPorEvento[key].cantidad += detalle.cantidad;
+            ventasPorEvento[key].total += detalle.subtotal;
+        });
+    });
+
+    const eventosArray = Object.values(ventasPorEvento);
 
     let html = `
         <div class="ventas-header">
-            <h2>📊 Reporte de Ventas</h2>
+            <h2>📊 Reporte de Ventas por Evento</h2>
             <div class="ventas-stats">
-                <span>Total ventas: <strong>${ventas.length}</strong></span>
+                <span>Total eventos vendidos: <strong>${eventosArray.length}</strong></span>
                 <span>Total ingresos: <strong>${formatearPrecio(calcularTotal(ventas))}</strong></span>
             </div>
         </div>
@@ -90,44 +111,27 @@ function mostrarVentas(ventas) {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Cliente</th>
-                        <th>Email</th>
+                        <th>Evento</th>
+                        <th>Categoría</th>
                         <th>Ciudad</th>
-                        <th>Fecha</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad Vendida</th>
                         <th>Total</th>
-                        <th>Detalles</th>
                     </tr>
                 </thead>
                 <tbody>
     `;
 
-    ventas.forEach((venta, index) => {
-        const fecha = new Date(venta.fecha);
-        const fechaFormateada = fecha.toLocaleDateString('es-CO', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
-
-        const todosLosDetalles = venta.detalles.map(d =>
-            `${d.nombre} (${d.cantidad}x)`
-        ).join('<br>');
-
+    eventosArray.forEach((evento, index) => {
         html += `
             <tr>
                 <td><span class="badge">${index + 1}</span></td>
-                <td><strong>${venta.cliente.nombre}</strong></td>
-                <td>${venta.cliente.email}</td>
-                <td><span class="city-tag">${venta.ciudad}</span></td>
-                <td>${fechaFormateada}</td>
-                <td class="price">${formatearPrecio(venta.total)}</td>
-                <td>
-                    <div class="detalles-cell">
-                        <div class="detalles-completos">
-                            ${todosLosDetalles}
-                        </div>
-                    </div>
-                </td>
+                <td><strong>${evento.nombre}</strong></td>
+                <td><span class="city-tag">${evento.categoria}</span></td>
+                <td><span class="city-tag">${evento.ciudad}</span></td>
+                <td class="price">${formatearPrecio(evento.precio)}</td>
+                <td><strong>${evento.cantidad}</strong></td>
+                <td class="price">${formatearPrecio(evento.total)}</td>
             </tr>
         `;
     });
