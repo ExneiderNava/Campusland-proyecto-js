@@ -80,6 +80,7 @@
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
+<<<<<<< Updated upstream
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     animation: modalFadeIn 0.25s ease;
 }
@@ -184,4 +185,117 @@
     .main-layout {
         grid-template-columns: 220px 1fr;
     }
+=======
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+.btn-save {
+    width: 100%;
+    padding: 12px;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-cancel {
+    width: 100%;
+    padding: 12px;
+    background-color: #e2e8f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+table button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s, transform 0.1s;
+    margin-right: 5px;
+}
+
+table button:first-child {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+table button:first-child:hover {
+    background-color: #cbd5e1;
+}
+
+table button:last-child {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+table button:last-child:hover {
+    background-color: #fecaca;
+}
+
+table button:active {
+    transform: scale(0.95);
+}
+/* Agregar al final de eventos.css */
+.btn-sm {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: #e2e8f0;
+    color: #475569;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-sm:hover {
+    background-color: #cbd5e1;
+}
+
+#nueva-ciudad-group {
+    padding: 10px 0;
+    border-top: 1px dashed #e2e8f0;
+    margin-top: 5px;
+}
+
+#nueva-ciudad-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+}
+
+#btn-agregar-ciudad {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+#btn-agregar-ciudad:hover {
+    background-color: #15396d;
+>>>>>>> Stashed changes
 }

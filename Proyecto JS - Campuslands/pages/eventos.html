@@ -41,6 +41,7 @@
         </main>
     </div>
 
+    <!-- MODAL -->
     <div id="eventos-modal" class="modal-overlay">
         <div class="eventos-modal-content">
             <h2 id="eventos-modal-titulo">Nuevo Evento</h2>
@@ -58,11 +59,13 @@
                 <div class="form-group">
                     <label>Ciudad</label>
                     <select id="eventos-ciudad" required>
-                        <option value="Barranquilla">Barranquilla</option>
-                        <option value="Bogotá">Bogotá</option>
-                        <option value="Bucaramanga">Bucaramanga</option>
-                        <option value="Medellín">Medellín</option>
+                        <option value="">Seleccione una ciudad</option>
                     </select>
+                    <button type="button" id="btn-mostrar-nueva-ciudad" style="margin-top:5px;">+ Agregar otra ciudad</button>
+                    <div id="nueva-ciudad-div" hidden style="margin-top:5px; display:flex; gap:8px;">
+                        <input type="text" id="eventos-nueva-ciudad" placeholder="Nombre de la ciudad">
+                        <button type="button" id="boton-agregar-ciudad">Agregar</button>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Precio</label>

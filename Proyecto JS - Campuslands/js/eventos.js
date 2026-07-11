@@ -1,4 +1,3 @@
-
 const formEvento = document.getElementById('eventos-form');
 const bodyEventos = document.getElementById('body-eventos');
 const modalEvento = document.getElementById('eventos-modal');
@@ -9,6 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     await cargarDatosIniciales();
     renderizarEventos();
     cargarCategoriasEnSelect();
+    cargarCiudadesEnSelect();
+    configurarEventListeners(); // para los botones de nueva ciudad
 });
 
 async function cargarDatosIniciales() {
@@ -20,6 +21,57 @@ async function cargarDatosIniciales() {
         } catch (error) {
             console.error("Error al cargar cliente.JSON:", error);
         }
+    }
+
+    if (!localStorage.getItem('ciudades')) {
+        try {
+            const response = await fetch('../data/ciudades.JSON');
+            const data = await response.json();
+            localStorage.setItem('ciudades', JSON.stringify(data));
+        } catch (error) {
+            console.error("Error al cargar ciudades.JSON:", error);
+            // Si no existe el archivo, crear lista por defecto
+            const ciudadesDefecto = ["Barranquilla", "Bogotá", "Bucaramanga", "Medellín"];
+            localStorage.setItem('ciudades', JSON.stringify(ciudadesDefecto));
+        }
+    }
+}
+
+function configurarEventListeners() {
+    const btnMostrar = document.getElementById('btn-mostrar-nueva-ciudad');
+    const divNueva = document.getElementById('nueva-ciudad-div');
+    const btnAgregar = document.getElementById('boton-agregar-ciudad');
+    const inputCiudad = document.getElementById('eventos-nueva-ciudad');
+
+    if (btnMostrar) {
+        btnMostrar.addEventListener('click', () => {
+            divNueva.hidden = !divNueva.hidden;
+        });
+    }
+
+    if (btnAgregar) {
+        btnAgregar.addEventListener('click', () => {
+            const nombreCiudad = inputCiudad.value.trim();
+            if (!nombreCiudad) {
+                alert('Escribe el nombre de la ciudad.');
+                return;
+            }
+
+            let ciudades = JSON.parse(localStorage.getItem('ciudades')) || [];
+            if (ciudades.some(c => c.toLowerCase() === nombreCiudad.toLowerCase())) {
+                alert('Esa ciudad ya existe.');
+                return;
+            }
+
+            ciudades.push(nombreCiudad);
+            localStorage.setItem('ciudades', JSON.stringify(ciudades));
+
+            cargarCiudadesEnSelect();
+            document.getElementById('eventos-ciudad').value = nombreCiudad;
+
+            inputCiudad.value = "";
+            divNueva.hidden = true;
+        });
     }
 }
 
@@ -33,6 +85,7 @@ btnNuevoEvento.addEventListener('click', () => {
 btnCancelar.addEventListener('click', () => {
     modalEvento.classList.remove('is-active');
 });
+
 function renderizarEventos() {
     const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
     bodyEventos.innerHTML = eventos.map(e => `
@@ -62,7 +115,8 @@ formEvento.addEventListener('submit', (e) => {
         precio: Number(document.getElementById('eventos-precio').value),
         fecha: document.getElementById('eventos-fecha-hora').value,
         ciudad: document.getElementById('eventos-ciudad').value,
-        imagen: document.getElementById('eventos-img').value
+        imagen: document.getElementById('eventos-img').value,
+        descripcion: document.getElementById('eventos-desc').value // agregamos descripción
     };
 
     if (id) {
@@ -98,6 +152,7 @@ window.editarEvento = (id) => {
         document.getElementById('eventos-fecha-hora').value = ev.fecha;
         document.getElementById('eventos-ciudad').value = ev.ciudad;
         document.getElementById('eventos-img').value = ev.imagen;
+        document.getElementById('eventos-desc').value = ev.descripcion || ''; // si no tiene, vacío
         document.getElementById('eventos-modal-titulo').innerText = "Editar Evento";
         modalEvento.classList.add('is-active');
     }
@@ -109,5 +164,14 @@ function cargarCategoriasEnSelect() {
     selectCat.innerHTML = '<option value="">Seleccione una categoría</option>';
     categorias.forEach(cat => {
         selectCat.innerHTML += `<option value="${cat.nombre}">${cat.nombre}</option>`;
+    });
+}
+
+function cargarCiudadesEnSelect() {
+    const selectCiudad = document.getElementById('eventos-ciudad');
+    const ciudades = JSON.parse(localStorage.getItem('ciudades')) || [];
+    selectCiudad.innerHTML = '<option value="">Seleccione una ciudad</option>';
+    ciudades.forEach(ciudad => {
+        selectCiudad.innerHTML += `<option value="${ciudad}">${ciudad}</option>`;
     });
 }
