@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderizarEventos();
     cargarCategoriasEnSelect();
     cargarCiudadesEnSelect();
-    configurarEventListeners(); // para los botones de nueva ciudad
+    configurarEventListeners();
 });
 
 async function cargarDatosIniciales() {
@@ -30,7 +30,7 @@ async function cargarDatosIniciales() {
             localStorage.setItem('ciudades', JSON.stringify(data));
         } catch (error) {
             console.error("Error al cargar ciudades.JSON:", error);
-            // Si no existe el archivo, crear lista por defecto
+
             const ciudadesDefecto = ["Barranquilla", "Bogotá", "Bucaramanga", "Medellín"];
             localStorage.setItem('ciudades', JSON.stringify(ciudadesDefecto));
         }
@@ -116,7 +116,7 @@ formEvento.addEventListener('submit', (e) => {
         fecha: document.getElementById('eventos-fecha-hora').value,
         ciudad: document.getElementById('eventos-ciudad').value,
         imagen: document.getElementById('eventos-img').value,
-        descripcion: document.getElementById('eventos-desc').value // agregamos descripción
+        descripcion: document.getElementById('eventos-desc').value
     };
 
     if (id) {
@@ -152,7 +152,7 @@ window.editarEvento = (id) => {
         document.getElementById('eventos-fecha-hora').value = ev.fecha;
         document.getElementById('eventos-ciudad').value = ev.ciudad;
         document.getElementById('eventos-img').value = ev.imagen;
-        document.getElementById('eventos-desc').value = ev.descripcion || ''; // si no tiene, vacío
+        document.getElementById('eventos-desc').value = ev.descripcion || '';
         document.getElementById('eventos-modal-titulo').innerText = "Editar Evento";
         modalEvento.classList.add('is-active');
     }
