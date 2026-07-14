@@ -30,6 +30,7 @@ async function cargarDatosIniciales() {
             localStorage.setItem('ciudades', JSON.stringify(data));
         } catch (error) {
             console.error("Error al cargar ciudades.JSON:", error);
+            
 
             const ciudadesDefecto = ["Barranquilla", "Bogotá", "Bucaramanga", "Medellín"];
             localStorage.setItem('ciudades', JSON.stringify(ciudadesDefecto));
@@ -38,16 +39,8 @@ async function cargarDatosIniciales() {
 }
 
 function configurarEventListeners() {
-    const btnMostrar = document.getElementById('btn-mostrar-nueva-ciudad');
-    const divNueva = document.getElementById('nueva-ciudad-div');
     const btnAgregar = document.getElementById('boton-agregar-ciudad');
     const inputCiudad = document.getElementById('eventos-nueva-ciudad');
-
-    if (btnMostrar) {
-        btnMostrar.addEventListener('click', () => {
-            divNueva.hidden = !divNueva.hidden;
-        });
-    }
 
     if (btnAgregar) {
         btnAgregar.addEventListener('click', () => {
@@ -70,7 +63,6 @@ function configurarEventListeners() {
             document.getElementById('eventos-ciudad').value = nombreCiudad;
 
             inputCiudad.value = "";
-            divNueva.hidden = true;
         });
     }
 }
